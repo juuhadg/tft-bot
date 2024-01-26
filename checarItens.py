@@ -4,9 +4,9 @@ import os
 
 def checarItens():
 
-    esquerda_cima = (304, 599)
-    direita_cima = (514, 606)
-    esquerda_baixo = (240, 848)
+    esquerda_cima = (237, 562)
+    direita_cima = (570, 662)
+    esquerda_baixo = (192, 858)
     
 
     largura = direita_cima[0] - esquerda_cima[0]
@@ -14,7 +14,7 @@ def checarItens():
 
     regiao_da_tela = (esquerda_cima[0], esquerda_cima[1], largura, altura)
 
-    pasta_items = './images/items/'
+    pasta_items = '../images/items/'
 
     items = []
     for arquivo in os.listdir(pasta_items):
