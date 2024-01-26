@@ -51,6 +51,7 @@ def getComps():
                 character = {
                     "name" : champion_name.text,
                     "itemsList" : itemsList,
+                    "shopImg" : f'./images/shop/{champion_name.text}.png'
                 }
 
                 champion_classes  = champion.get_attribute("class")
@@ -70,9 +71,6 @@ def getComps():
             filtered_data = [item for item in sTierComps if 'Slow Roll' in item['playstyle']] #optional filter for only slow roll comps
 
 
-    print('\n')
-    for comp in filtered_data:
-        print(comp)
-        print('\n')
+   
 
     return filtered_data
