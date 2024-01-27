@@ -48,5 +48,24 @@ def checarNivel():
     except:
         pass
     
+def checarEstagio():
+    esquerda_cima = (756, 2)
+    direita_cima = (820, 2)
+    esquerda_baixo = (756, 38)
+        
+
+    regiao_da_tela = (esquerda_cima[0], esquerda_cima[1], direita_cima[0], esquerda_baixo[1])
+
+
+    imagem = ImageGrab.grab(bbox=regiao_da_tela)
+    try:
+        caminho_do_arquivo = "./images/temp/stage.png"
+        imagem.save(caminho_do_arquivo)
+        stage = lerImagem(caminho_do_arquivo)
+        #stage = int(stage.split('.')[1].strip())
+        print(f'Estagio Atual : {stage}')
+        return stage
+    except:
+        pass
 
 
