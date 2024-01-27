@@ -77,4 +77,3 @@ def getComps():
         print('\n')
     return filtered_data
 
-getComps()

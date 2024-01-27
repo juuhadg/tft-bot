@@ -28,6 +28,7 @@ def checarItens():
                     
             items.append(item_name)
 
-    print(items)
+    print(f'Itens Atuais : {items}')
+    return items
 
 

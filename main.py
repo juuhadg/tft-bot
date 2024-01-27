@@ -27,10 +27,18 @@ print(componentes_necessarios)
 try:
     while True:
         checarLoja(test['comp'])
-        checarItens()
+        itens_atuais = checarItens()
         checarNivel()
         checarGold()
         checarEstagio()
+
+        for indice, conjunto in enumerate(componentes_necessarios):
+            if all(item in itens_atuais for item in conjunto):
+                print(f"É possível buildar {carry['itemsList'][indice]} para {carry['name']}")
+        
+
+
+
         time.sleep(2.5)
 
 except KeyboardInterrupt:

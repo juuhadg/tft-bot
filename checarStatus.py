@@ -62,6 +62,8 @@ def checarEstagio():
         caminho_do_arquivo = "./images/temp/stage.png"
         imagem.save(caminho_do_arquivo)
         stage = lerImagem(caminho_do_arquivo)
+        if not stage or len(stage) == 0:
+            stage = 'PVE'
         #stage = int(stage.split('.')[1].strip())
         print(f'Estagio Atual : {stage}')
         return stage
