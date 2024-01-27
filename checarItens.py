@@ -14,7 +14,7 @@ def checarItens():
 
     regiao_da_tela = (esquerda_cima[0], esquerda_cima[1], largura, altura)
 
-    pasta_items = '../images/items/'
+    pasta_items = './images/items/'
 
     items = []
     for arquivo in os.listdir(pasta_items):
