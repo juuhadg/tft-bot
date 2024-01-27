@@ -24,7 +24,7 @@ def selecionarComp(comps,itens_atuais):
 
     print(pontuacao)
 
-
+# mock =>
 compes = [{'name': 'Punk Rapidfire', 'playstyle': 'Slow Roll (6)', 'comp': [{'name': 'Jinx', 'itemsList': ['Deathblade', 'GuinsoosRageblade', 'LastWhisper'], 'shopImg': './images/shop/Jinx.png', 'carry': True}, {'name': 'Vi', 'itemsList': [], 'shopImg': './images/shop/Vi.png'}, {'name': 'Pantheon', 'itemsList': ['BrambleVest', 'DragonsClaw', 'WarmogsArmor'], 'shopImg': './images/shop/Pantheon.png'}, {'name': 'Twitch', 'itemsList': [], 'shopImg': './images/shop/Twitch.png'}, {'name': 'Amumu', 'itemsList': [], 'shopImg': './images/shop/Amumu.png'}, {'name': 'Neeko', 'itemsList': [], 'shopImg': './images/shop/Neeko.png'}, {'name': 'Vex', 'itemsList': [], 'shopImg': './images/shop/Vex.png'}, {'name': 'Thresh', 'itemsList': [], 'shopImg': './images/shop/Thresh.png'}]},
 
 
