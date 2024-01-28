@@ -24,8 +24,7 @@ def checarItens():
                 
 
         if elemento_encontrado:
-            item_name = arquivo.split('.')[0]
-                    
+            item_name = arquivo.split('.')[0]   
             items.append(item_name)
 
     print(f'Itens Atuais : {items}')

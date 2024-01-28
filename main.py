@@ -4,6 +4,7 @@ from checarLoja import checarLoja
 from checarItens import checarItens
 from checarStatus import checarGold,checarNivel,checarEstagio
 from receitaItems import itemsList
+from selecionarComp import selecionarComp
 
 print("Fetching the TFT Meta Comps...")
 comps = getComps()
@@ -28,12 +29,15 @@ try:
     while True:
         checarLoja(test['comp'])
         itens_atuais = checarItens()
-        checarNivel()
-        checarGold()
-        checarEstagio()
+        nivel_atual = checarNivel()
+        gold_atual = checarGold()
+        estagio_atual = checarEstagio()
+        
+        if estagio_atual.strip().replace('-','') == '21':
+            selecionarComp(comps,itens_atuais)
 
         for indice, conjunto in enumerate(componentes_necessarios):
-            if all(item in itens_atuais for item in conjunto):
+            if all(item in itens_atuais for item in conjunto) and len(itens_atuais) > 1:
                 print(f"É possível buildar {carry['itemsList'][indice]} para {carry['name']}")
         
 

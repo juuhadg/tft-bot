@@ -20,7 +20,7 @@ def checarGold():
             gold = int(gold.strip()[1:])
         else:
             gold = "menos que 10"
-        print(f'Gold Atual : {gold}')
+       
         return gold
     except:
         pass
@@ -43,7 +43,6 @@ def checarNivel():
         imagem.save(caminho_do_arquivo)
         nivel = lerImagem(caminho_do_arquivo)
         nivel = int(nivel.split('.')[1].strip())
-        print(f'Nivel Atual : {nivel}')
         return nivel
     except:
         pass
@@ -65,7 +64,7 @@ def checarEstagio():
         if not stage or len(stage) == 0:
             stage = 'PVE'
         #stage = int(stage.split('.')[1].strip())
-        print(f'Estagio Atual : {stage}')
+        
         return stage
     except:
         pass
