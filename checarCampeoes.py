@@ -1,24 +1,68 @@
-import os
+from PIL import ImageGrab
+from lerImage import lerImagem
 import time
 import pyautogui
+import win32api
+import win32con
+from localizacoes import localizacoesBanco,localizacoesCampo
+
 
 def checarCampeoes():
-
-    pasta_champions = './images/champions/'
-
     champions = []
-    for arquivo in os.listdir(pasta_champions):
+
+    for casa,localizacao in localizacoesCampo.items():
+        valores = localizacao
+        x = valores[0]
+        y = valores[1]
+        campeao = clicarELerCampeao(x,y)
+        if campeao and campeao not in champions:
+            champions.append(campeao)
         
-        caminho_imagem = os.path.join(pasta_champions, arquivo)
-        elemento_encontrado = pyautogui.locateOnScreen(caminho_imagem, confidence=0.9)
-                
-
-        if elemento_encontrado:
-            champ_name = arquivo.split('.')[0]
-                    
-            champions.append(champ_name)
-
-    print(f'Itens Atuais : {champions}')
+        
+    for casa,localizacao in localizacoesBanco.items():
+        valores = localizacao
+        x = valores[0]
+        y = valores[1]
+        campeao = clicarELerCampeao(x,y)
+        if campeao :
+            champions.append(campeao)
+        
+            
+    pyautogui.rightClick(484,650)
     return champions
+
+
+def clicarELerCampeao(x,y):
+    win32api.SetCursorPos((1194,246))
+
+    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
+    time.sleep(0.1)  
+    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
+
+    time.sleep(0.1)
+
+    win32api.SetCursorPos((x, y))
+
+    win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0)
+    time.sleep(0.1)  
+    win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0)
+
+    esquerda_cima = (1705,317)
+    direita_cima = (1833,317)
+    esquerda_baixo = (1705,342)
+        
+
+    regiao_da_tela = (esquerda_cima[0], esquerda_cima[1], direita_cima[0], esquerda_baixo[1])
+
+
+    imagem = ImageGrab.grab(bbox=regiao_da_tela)
+    try:
+        caminho_do_arquivo = "./images/temp/champ.png"
+        imagem.save(caminho_do_arquivo)
+        champion = lerImagem(caminho_do_arquivo)
+        if champion and len(champion) > 0 and champion != '':
+            return champion.strip()
+    except:
+        pass
 
 

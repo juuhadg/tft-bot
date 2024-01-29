@@ -71,9 +71,9 @@ def getComps():
             filtered_data = [item for item in sTierComps if 'Slow Roll' in item['playstyle']] #optional filter for only slow roll comps
 
 
-    print('\n')
-    for comp in sTierComps:
-        print(comp)
-        print('\n')
+    #print('\n')
+    #for comp in sTierComps:
+    #    print(comp)
+    #    print('\n')
     return filtered_data
 

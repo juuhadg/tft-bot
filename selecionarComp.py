@@ -1,8 +1,16 @@
 from receitaItems import itemsList
 from collections import Counter
 
-def selecionarComp(comps,itens_atuais):
+def selecionarComp(comps,itens_atuais,loja,campeoes):
     pontuacao = {}
+
+    for champ in loja:
+        champ = champ.replace("'",'')
+        champ = champ.lower()
+
+    for champ in campeoes:
+        champ = champ.replace("'",'')
+        champ = champ.lower()
 
     for comp in comps:
         temp = itens_atuais.copy()
@@ -43,17 +51,23 @@ def selecionarComp(comps,itens_atuais):
                 componentes_restantes.remove(item)
                 pontos += 1
 
-       
+        for champion in comp['comp']:
+            if champion['name'].lower() in loja:
+                pontos +=  (loja.count(champion['name'])  * 0.75)
+                
+            if champion['name'] in campeoes:
+                pontos +=  ( campeoes.count(champion['name']) * 0.75 )
+
 
         pontuacao[comp['name']] = pontos
 
     maiores_pontuacoes = max(pontuacao.values())
-    vencedores = []
+    vencedor = ''
     for chave, pontos in pontuacao.items():
         if pontos == maiores_pontuacoes:
-            vencedores.append(chave)
-    print(f'Melhores Comps para seguir de acordo com seus itens : {vencedores}')
-    return vencedores
+            vencedor = chave
+    print(f'Melhor Comp para seguir: {vencedor}')
+    return vencedor
 
 
 

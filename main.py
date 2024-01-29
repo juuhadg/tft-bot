@@ -1,44 +1,55 @@
 from getMetaComps import getComps
 import time
-from checarLoja import checarLoja
+from checarLoja import checarLoja,checarTodaLoja
 from checarItens import checarItens
 from checarStatus import checarGold,checarNivel,checarEstagio
 from receitaItems import itemsList
 from selecionarComp import selecionarComp
+from checarCampeoes import checarCampeoes
 
 print("Fetching the TFT Meta Comps...")
 comps = getComps()
 
 print('\n')
 
+compSelecionada = None
 
-test = comps[0]
-carry = next((champion for champion in test['comp'] if champion.get('carry') == True), None)
-componentes_necessarios = []
-for item in carry['itemsList']:
-    componentes = itemsList[item.lower()]
-    componentes_necessarios.append(componentes)
-
-
-print('Comp Selecionada:')
-print(test)
-print('\n')
-print(f'Componentes principais para {carry["name"]} :')
-print(componentes_necessarios)
 try:
     while True:
-        checarLoja(test['comp'])
+        if compSelecionada != None:
+            checarLoja(compSelecionada['comp'])
+            for indice, conjunto in enumerate(componentes_necessarios):
+                if all(item in itens_atuais for item in conjunto) and len(itens_atuais) > 1:
+                    print(f"É possível buildar {carry['itemsList'][indice]} para {carry['name']}")
+
         itens_atuais = checarItens()
         nivel_atual = checarNivel()
         gold_atual = checarGold()
         estagio_atual = checarEstagio()
         
+        # decidir a comp no fim dos estagios PVE
         if estagio_atual.strip().replace('-','') == '21':
-            selecionarComp(comps,itens_atuais)
 
-        for indice, conjunto in enumerate(componentes_necessarios):
-            if all(item in itens_atuais for item in conjunto) and len(itens_atuais) > 1:
-                print(f"É possível buildar {carry['itemsList'][indice]} para {carry['name']}")
+            if compSelecionada == None:
+                loja = checarTodaLoja()
+                campeoes = checarCampeoes()
+                melhorCompAseguir = selecionarComp(comps,itens_atuais,loja,campeoes)
+                compSelecionada = next((comp for comp in comps if comp.get('name') == melhorCompAseguir), None)
+
+                carry = next((champion for champion in compSelecionada['comp'] if champion.get('carry') == True), None)
+                componentes_necessarios = []
+
+                for item in carry['itemsList']:
+                    componentes = itemsList[item.lower()]
+                    componentes_necessarios.append(componentes)
+
+                print('Comp Selecionada:')
+                print(compSelecionada)
+                print('\n')
+                print(f'Componentes principais para {carry["name"]} :')
+                print(componentes_necessarios)
+
+        
         
 
 
