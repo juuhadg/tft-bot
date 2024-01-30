@@ -53,10 +53,10 @@ def selecionarComp(comps,itens_atuais,loja,campeoes):
 
         for champion in comp['comp']:
             if champion['name'].lower() in loja:
-                pontos +=  (loja.count(champion['name'])  * 0.75)
+                pontos +=  (loja.count(champion['name'])  * 0.5)
                 
             if champion['name'] in campeoes:
-                pontos +=  ( campeoes.count(champion['name']) * 0.75 )
+                pontos +=  ( campeoes.count(champion['name']) * 0.5 )
 
 
         pontuacao[comp['name']] = pontos

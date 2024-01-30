@@ -75,5 +75,6 @@ def getComps():
     #for comp in sTierComps:
     #    print(comp)
     #    print('\n')
+    driver.quit()
     return filtered_data
 
