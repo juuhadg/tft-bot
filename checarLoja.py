@@ -20,6 +20,7 @@ def checarLoja(comp):
 
     for champion in comp:
 
+        
         elemento_encontrado = pyautogui.locateOnScreen(champion['shopImg'], region=regiao_da_tela,confidence=0.8)
 
                     

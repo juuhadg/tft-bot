@@ -13,7 +13,7 @@ from selecionarAprimoramento import selecionarMelhorAprimoramento
 print("Fetching the TFT Meta Comps...")
 comps = getComps()
 augments = obterAugments()
-
+gameState = None
 print('\n')
 
 compSelecionada = None
@@ -30,6 +30,10 @@ try:
         nivel_atual = checarNivel()
         gold_atual = checarGold()
         estagio_atual = checarEstagio()
+
+        if pyautogui.locateOnScreen('./images/misc/selecionarAprimoramento.png',confidence=0.8):
+            selecionarMelhorAprimoramento(augments)
+        
         
         # decidir a comp no fim dos estagios PVE
         if estagio_atual.strip().replace('-','') == '21':
@@ -53,8 +57,6 @@ try:
                 print(f'Componentes principais para {carry["name"]} :')
                 print(componentes_necessarios)
         
-        if pyautogui.locateOnScreen('./images/misc/selecionarAprimoramento.png'):
-            selecionarMelhorAprimoramento()
         
         
 

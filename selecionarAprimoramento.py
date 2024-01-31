@@ -13,6 +13,7 @@ augments = obterAugments()
 
 def selecionarMelhorAprimoramento(augment_data):
 
+    time.sleep(2)
     esquerda_cima1 = (408,530)
     esquerda_baixo1 = (408,564)
     direita_cima1 = (700,530)
@@ -71,7 +72,7 @@ def selecionarMelhorAprimoramento(augment_data):
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
         print(f' aprimoramento selecionado : {vencedor["nome"]} , com colocação média de {vencedor["placement"]} , clicado em {selecionado.left} , {selecionado.top}')
 
-selecionarMelhorAprimoramento(augments)
+
 
 
 
