@@ -45,5 +45,3 @@ def stringMatch(string1,string2, minimumMatchRate = 1):
     
 
 
-
-

@@ -9,8 +9,6 @@ def checarLoja(comp):
     esquerda_baixo = (474, 1070)
    
 
-
-
     largura = direita_cima[0] - esquerda_cima[0]
 
     altura = esquerda_baixo[1] - esquerda_cima[1]
@@ -35,8 +33,6 @@ def checarTodaLoja():
     esquerda_baixo = (474, 1070)
    
 
-
-
     largura = direita_cima[0] - esquerda_cima[0]
 
     altura = esquerda_baixo[1] - esquerda_cima[1]
@@ -47,6 +43,7 @@ def checarTodaLoja():
     pasta_loja = './images/shop/'
 
     champions = []
+
     for arquivo in os.listdir(pasta_loja):
         
         caminho_imagem = os.path.join(pasta_loja, arquivo)
