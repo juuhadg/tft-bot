@@ -7,7 +7,7 @@ from obterDadosAugments import obterAugments
 from tratarString import stringMatch
 import win32api
 import win32con
-
+from click import click
 augments = obterAugments()
 
 
@@ -93,10 +93,8 @@ def selecionarMelhorAprimoramento(augment_data):
     print(f'selecionado : {selecionado}')
     
     if selecionado is not None:
-        win32api.SetCursorPos((selecionado.left,selecionado.top))
-        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
-        time.sleep(0.1)  
-        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
+        
+        click(selecionado.left,selecionado.top)
         print(f' aprimoramento selecionado : {vencedor["nome"]} , com colocação média de {vencedor["placement"]} , clicado em {selecionado.left} , {selecionado.top}')
    
 

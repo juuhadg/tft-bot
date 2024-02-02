@@ -5,6 +5,7 @@ import pyautogui
 import win32api
 import win32con
 from localizacoes import localizacoesBanco,localizacoesCampo
+from click import click
 
 
 def checarCampeoes():
@@ -33,19 +34,13 @@ def checarCampeoes():
 
 
 def clicarELerCampeao(x,y):
-    win32api.SetCursorPos((1194,246))
 
-    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
-    time.sleep(0.1)  
-    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
-
+    click(1194,246)
+   
     time.sleep(0.1)
 
-    win32api.SetCursorPos((x, y))
-
-    win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0)
-    time.sleep(0.1)  
-    win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0)
+    click(x,y)
+    
 
     esquerda_cima = (1705,317)
     direita_cima = (1833,317)
