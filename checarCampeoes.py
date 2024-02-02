@@ -39,7 +39,7 @@ def clicarELerCampeao(x,y):
    
     time.sleep(0.1)
 
-    click(x,y)
+    click(x,y,'RIGHT')
     
 
     esquerda_cima = (1705,317)
