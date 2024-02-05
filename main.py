@@ -10,6 +10,7 @@ from obterDadosAugments import obterAugments
 import pyautogui
 from selecionarAprimoramento import selecionarMelhorAprimoramento
 from detectarEstadoDoJogo import detectarEstado
+import gameStyles
 
 print("Fetching the TFT Meta Comps...")
 comps = getComps()
@@ -22,7 +23,6 @@ compSelecionada = None
 try:
     while True:
         gameState = detectarEstado()
-        print(f'game state : {gameState}')
 
         if gameState == 'AUGMENT_SELECT':
             selecionarMelhorAprimoramento(augments)
@@ -35,13 +35,6 @@ try:
             gold_atual = checarGold()
             estagio_atual = checarEstagio()
 
-            if compSelecionada != None:
-                checarLoja(compSelecionada['comp'])
-                for indice, conjunto in enumerate(componentes_necessarios):
-                    if all(item in itens_atuais for item in conjunto) and len(itens_atuais) > 1:
-                        print(f"É possível buildar {carry['itemsList'][indice]} para {carry['name']}")
-            
-            # decidir a comp no fim dos estagios PVE
             if estagio_atual.strip().replace('-','') == '21':
 
                 if compSelecionada == None:
@@ -57,11 +50,16 @@ try:
                         componentes = itemsList[item.lower()]
                         componentes_necessarios.append(componentes)
 
-                    print('Comp Selecionada:')
-                    print(compSelecionada)
-                    print('\n')
-                    print(f'Componentes principais para {carry["name"]} :')
-                    print(componentes_necessarios)
+                
+        if compSelecionada != None:
+            game_style = compSelecionada['playstyle']
+
+            if 'Slow Roll' in game_style:
+                nivelDaComp = int(game_style.strip().split('(')[0])
+
+                gameStyles.slowRoll(nivel = nivelDaComp, comp = compSelecionada , augments = augments)
+            
+                
         
         
         

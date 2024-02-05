@@ -8,25 +8,29 @@ from localizacoes import localizacoesBanco,localizacoesCampo
 from click import click
 
 
-def checarCampeoes():
+def checarCampeoes(banco_only = False, campo_only= False, salvar_coordenadas= False):
     champions = []
 
-    for casa,localizacao in localizacoesCampo.items():
-        valores = localizacao
-        x = valores[0]
-        y = valores[1]
-        campeao = clicarELerCampeao(x,y)
-        if campeao and campeao not in champions:
-            champions.append(campeao)
+    if banco_only == False:
+        for casa,localizacao in localizacoesCampo.items():
+            valores = localizacao
+            x = valores[0]
+            y = valores[1]
+            campeao = clicarELerCampeao(x,y)
+            if campeao and campeao not in champions:
+                if salvar_coordenadas == True:
+                    champions.append([campeao,x,y])
+                else:
+                    champions.append(campeao)
         
-        
-    for casa,localizacao in localizacoesBanco.items():
-        valores = localizacao
-        x = valores[0]
-        y = valores[1]
-        campeao = clicarELerCampeao(x,y)
-        if campeao :
-            champions.append(campeao)
+    if campo_only == False:
+        for casa,localizacao in localizacoesBanco.items():
+            valores = localizacao
+            x = valores[0]
+            y = valores[1]
+            campeao = clicarELerCampeao(x,y)
+            if campeao :
+                champions.append(campeao)
         
             
     pyautogui.rightClick(484,650)

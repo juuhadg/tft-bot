@@ -1,7 +1,7 @@
 import pyautogui
 import time
 import os
-
+from receitaItems import itemsList
 def checarItens():
 
     esquerda_cima = (237, 562)
@@ -29,5 +29,25 @@ def checarItens():
 
     print(f'Itens Atuais : {items}')
     return items
+
+
+def checarSePodeBuildarItem(comp,itens):
+    carry = next((champion for champion in comp['comp'] if champion.get('carry') == True), None)
+    componentes_necessarios = []
+    buildaveis = []
+    for item in carry['itemsList']:
+        componentes = itemsList[item.lower()]
+        componentes_necessarios.append(componentes)
+        
+            
+
+    #checar para itens completos possiveis
+    for conjunto in componentes_necessarios:
+       
+
+        if all(conjunto.count(item) <= itens.count(item) for item in conjunto):
+                buildaveis.append(conjunto)
+   
+    return buildaveis
 
 

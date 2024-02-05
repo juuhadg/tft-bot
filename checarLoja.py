@@ -14,7 +14,8 @@ def checarLoja(comp):
     altura = esquerda_baixo[1] - esquerda_cima[1]
 
     regiao_da_tela = (esquerda_cima[0], esquerda_cima[1], largura, altura)
-
+    
+    results = []
 
     for champion in comp:
 
@@ -24,7 +25,9 @@ def checarLoja(comp):
                     
         if elemento_encontrado:
             print(f"{champion['name']} na Loja !")
+            results.append([elemento_encontrado.left,elemento_encontrado.top])
 
+    return results
 
 def checarTodaLoja():
     time.sleep(1)
